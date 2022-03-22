@@ -15,13 +15,20 @@ class LFSR:
 
 
 def main():
- 
- 
-    if __name__ == "__main__":
-        main()
-
-test = LFSR('1010011101',7)
-test.bit(2)
-test.step()
- 
-print(test.seed,test.seed[-1])
+        
+        # your executable code that invokes LFSR
+ if __name__ == '__main__':
+     lfsr = LFSR()
+     initial_seed = ['0110100111',
+                     '0100110010',
+                     '1001011101',
+                     '0001001100',
+                     '1010011101']
+     tap = [2, 8, 5, 1, 7]
+     i = 0
+     for each in initial_seed:
+         lfsr.initial_seed = initial_seed[i]
+         lfsr.tap = tap[i]
+         lfsr.step()
+         i += 1
+         print('test')
