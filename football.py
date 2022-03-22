@@ -1,9 +1,5 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
 """
 Created on Mon Mar 21 18:03:34 2022
-@author: leebujm1
-"""
 
 from PIL import Image as ig
 from lfsr import LFSR

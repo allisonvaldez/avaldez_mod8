@@ -3,7 +3,7 @@ class LFSR:
         self.seed = seed
         self.tap = tap
 
-    def bit(self):
+    def bit(self, i):
         self.i = self.seed[len(self.seed) - self.tap]
 
     def step(self):
@@ -26,6 +26,7 @@ def main():
 # your executable code that invokes LFSR
  if __name__ == '__main__':
     main()
+
 initial_seed = ['0110100111', '0100110010', '1001011101', '0001001100', '1010011101']
 tap = [2, 8, 5, 1, 7]
 for flag in range(len(initial_seed)):
