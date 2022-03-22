@@ -1,56 +1,38 @@
 class LFSR:
-    def __init__(self, seed, tap):
-        self.seed = seed
+
+    # creating a LFSR with initial state 'seed' and tap 'tap'
+    # mapping each character of seed string into an array of integers 0 or 1
+    def __init__(self, seed: str, tap: int):
+        self.initial_seed = list(map(int, seed))
         self.tap = tap
 
-    def bit(self, i):
-        self.i = self.seed[len(self.seed) - self.tap]
+    # returning the bit at the tap position index i (negative indexing)
+    def bit(self, i: int):
+        return self.initial_seed[len(self.initial_seed) - self.tap]
 
+    # execute one LFSR iteration & return new rightmost bit as an int
     def step(self):
-        xo = int(self.seed[0]) ^ int(self.i)
-        self.seed = str(self.seed[1:]) + str(xo)
+        tap_bit = self.bit(self.tap)
+        output_xor = self.initial_seed.pop(0) ^ tap_bit
+        self.initial_seed.append(output_xor)
+        return output_xor
 
-    def bit(self, i):
-        self.i = self.seed[len(self.seed)-self.tap]
-
-    def step(self):
-        xo = int(self.seed[0])^int(self.i)
-        self.seed = str(self.seed[1:])+str(xo)
-
+    # return string representation of the LFSR
     def __str__(self):
-        return self
-
-def main():
+        return ''.join(map(str, self.initial_seed))
 
 
-# your executable code that invokes LFSR
- if __name__ == '__main__':
-    main()
+# executable code that invokes LFSR
+if __name__ == '__main__':
 
-initial_seed = ['0110100111', '0100110010', '1001011101', '0001001100', '1010011101']
-tap = [2, 8, 5, 1, 7]
-for flag in range(len(initial_seed)):
-    test = LFSR(initial_seed[flag], tap[flag])
-    test.bit()
-    test.step()
-    print(test.seed, test.seed[-1])
+    seeds = [LFSR('0110100111', 2),
+             LFSR('0100110010', 8),
+             LFSR('1001011101', 5),
+             LFSR('0001001100', 1),
+             LFSR('1010011101', 7)]
 
-def main():
-        
-        # your executable code that invokes LFSR
- if __name__ == '__main__':
-     lfsr = LFSR()
-     initial_seed = ['0110100111',
-                     '0100110010',
-                     '1001011101',
-                     '0001001100',
-                     '1010011101']
-     tap = [2, 8, 5, 1, 7]
-     i = 0
-     for each in initial_seed:
-         lfsr.initial_seed = initial_seed[i]
-         lfsr.tap = tap[i]
-         lfsr.step()
-         i += 1
-         print('test')
-
+    # iterate each LFSR once using step()
+    for lfsr in seeds:
+        lfsr_iteration = lfsr.step()
+        # print the new seed and the value of the new bit in format [LFSR] [new bit]
+        print(lfsr, lfsr_iteration)
