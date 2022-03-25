@@ -1,22 +1,43 @@
+"""
+Import the LFSR class and Pillow code for use in ImageEncrypter
+"""
 from PIL import Image
-from lfsr import LFSR  # import your LFSR class for use in ImageEncrypter
+from lfsr import LFSR
 
 
 class ImageEncrypter:
-    # initialize an ImageEncrypter object with an LFSR and image file name
+    """
+    This class is in charge of organizing and creating the functions
+    necessary for our LFSR project to run.
+    """
+
     def __init__(self, lfsr: LFSR, file_name: str):
+        """
+        This function initializes the state of the an ImageEncrypter
+        object with the LFSR name (as its name) and proper image filename.
+
+        :param lfsr: The variable name given
+        :param file_name: The image file name
+        """
         self.lfsr = lfsr
         self.file_name = file_name
 
-    # open the image specified by ‘file_name’ in your constructor
-    # you will find the Image.open method useful here
     def open_image(self):
+        """
+        This function is in charge of opening the image (dictated by the
+        filename).
+
+        :return: The image retreived by the function call
+        """
         return Image.open(self.file_name)
 
-    # calls open_image()
+    def pixelate(self):
+        """
+        This function executes open_image()
     # converts the image to a 2D array of R, G, B triples
     # you will find the Image.load method useful here
-    def pixelate(self):
+        :return:
+        """
         image = self.open_image()
         loaded_image = image.load()
         pixels = []
@@ -26,10 +47,13 @@ class ImageEncrypter:
                 pixels.append(loaded_image[w, h])
         return pixels
 
-    # encrypts the 2D pixelated “image” returned from pixelate()
+    def encrypt(self):
+        """
+        # encrypts the 2D pixelated “image” returned from pixelate()
     # returns the encrypted 2D array
     # you will find the binary XOR operator useful here
-    def encrypt(self):
+        :return:
+        """
         image_pixels = self.pixelate()
         encrypted_image_pixels = []
         for pixel in image_pixels:
@@ -44,18 +68,29 @@ class ImageEncrypter:
 
         return encrypted_image_pixels
 
-    # converts the encrypted 2D pixelated image into an image
-    # and names it <file_name>_transform.png
-    # you will find the Image.save method useful here
+
     def save_image(self, file_name: str):
+        """
+        # converts the encrypted 2D pixelated image into an image and names
+        it <file_name>_transform.png you will find the Image.save method
+        useful here
+
+        :param file_name:
+        :return:
+        """
         encrypted_image_pixels = self.encrypt()
         image = Image.new('RGB', (225, 225))
         image.putdata(encrypted_image_pixels)
         image.save(f"{file_name}_transform.png")
 
 
-# your executable code that invokes ImageEncrypter and encrypts/decrypts an # image and saves the result to a file
 def main():
+    """
+    your executable code that invokes ImageEncrypter and encrypts/decrypts an
+    image and saves the result to a file
+
+    :return:
+    """
     image = ImageEncrypter(LFSR('10011010', 5), 'football.png')
     image.save_image('football')
 
