@@ -33,9 +33,9 @@ class ImageEncrypter:
 
     def pixelate(self):
         """
-        This function executes open_image()
-    # converts the image to a 2D array of R, G, B triples
-    # you will find the Image.load method useful here
+        This function executes open_image() converts the image to a 2D array
+        of R, G, B triples you will find the Image.load method useful here
+
         :return:
         """
         image = self.open_image()
@@ -49,9 +49,9 @@ class ImageEncrypter:
 
     def encrypt(self):
         """
-        # encrypts the 2D pixelated “image” returned from pixelate()
-    # returns the encrypted 2D array
-    # you will find the binary XOR operator useful here
+        encrypts the 2D pixelated “image” returned from pixelate() returns
+        the encrypted 2D array you will find the binary XOR operator useful here
+
         :return:
         """
         image_pixels = self.pixelate()
@@ -60,14 +60,13 @@ class ImageEncrypter:
             temp_pixel = []
             for color in pixel:
                 self.lfsr.step()
-                # Use string representation to get the lfsr value
-                # Convert binary to integer using int base=2
+                """
+                Use string representation to get the lfsr value Convert 
+                binary to integer using int base=2
+                """
                 temp_pixel.append(color ^ int(self.lfsr.__str__(), base=2))
-
             encrypted_image_pixels.append(tuple(temp_pixel))
-
         return encrypted_image_pixels
-
 
     def save_image(self, file_name: str):
         """

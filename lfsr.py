@@ -49,7 +49,6 @@ class LFSR:
         return ''.join(map(str, self.initial_seed))
 
 
-
 if __name__ == '__main__':
     """
     Required code to execute program as a script.
@@ -66,8 +65,13 @@ if __name__ == '__main__':
     This for loop iterates over each string and performs the LFSR once using 
     the step() function
     """
+
     for lfsr in seeds:
         lfsr_iteration = lfsr.step()
-        # print the new seed and the value of the new bit in format [LFSR] [new bit]
+
+        """
+        This statement prints the new seed and value of the new bit created in 
+        the format [LFSR][new bit]
+        """
         print(lfsr, lfsr_iteration)
 
