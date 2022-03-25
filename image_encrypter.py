@@ -14,7 +14,7 @@ class ImageEncrypter:
 
     def __init__(self, lfsr: LFSR, file_name: str):
         """
-        This function initializes the state of the an Image_Encrypter's object
+        This function initializes the state of the an ImageEncrypter's object
         with LFSR as it's name, and an image filename.
 
         :param lfsr: The variable name given
@@ -73,8 +73,8 @@ class ImageEncrypter:
 
     def save_image(self, file_name: str):
         """
-        This function converts the encrypted pixelated 2D image back into an
-        image and names it <file_name>_transform.png.
+        This function saves the encrypted pixelated 2D image into a file called
+        <file_name>_transform.png.
 
         :param file_name:
         :return:
