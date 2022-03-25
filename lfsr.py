@@ -6,9 +6,10 @@ class LFSR:
 
     def __init__(self, seed: str, tap: int):
         """
-        This __init__ method in in charge of creating the initial state
-        for 'seed' and tap 'tap'. Eventually it will map each character of
-        seed string to an array of integers of either 0 or 1.
+        This __init__ method is in charge of creating the initial state and
+        behavior of the class object. We declared the states for seed and
+        tap. Eventually the function will map each character of the string
+        to an array of integers of (of either 0's or 1's).
 
         :param seed: The string of characters given in the project
         :param tap: The chosen number given for the component for the XOR
@@ -20,7 +21,7 @@ class LFSR:
     def bit(self, i: int):
         """
         This function is in charge of returning the bit at the designated tap
-        position (at index i). We utilized negative indexing for this function.
+        position. We utilized negative indexing for this function.
 
         :param i: The designated int tap position
         :return: The bit at designated tap position
@@ -54,7 +55,7 @@ if __name__ == '__main__':
     Required code to execute program as a script.
     """
 
-    # Seeds necessary to convert.
+    # The Seeds given in the project guidelines to convert.
     seeds = [LFSR('0110100111', 2),
              LFSR('0100110010', 8),
              LFSR('1001011101', 5),

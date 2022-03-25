@@ -9,15 +9,15 @@ Approach:
 Our group declared a LFSR class to organize and contain our methods. Within
 the class, we initialized an __init__ method that declared the attributes and
 behavior of our class object. Next, our bit function returned a specific bit
-based off of a predetermined tap number given in the assignment. Our step
-function executes only one step of the LFSR iteration (as per the lab
+based off of a predetermined tap number (previously given in the assignment).
+Our step function executes only one step of the LFSR iteration (as per the lab
 guidelines) and utilizes the XOR operator to do so. Next, we utilized the
 __str__ function to return the LFSR string obtained in the previous function.
-Towards the end of the code, our group included a method to execute the file as
-a script. Within our __main__ method we provide the program with the needed
-seeds as a list and the tap number required. Lastly, we included a for loop that
-iterated over the list of seeds and performed the LFSR step function and printed
-the results.
+Towards the end of the code, our group included a __main__ method to execute the
+file as a script. Within our __main__ method, we provide the program with the
+needed seeds as a list along with the tap number required. Lastly, we included a
+for loop that iterated over the list of seeds, and performed the LFSR step
+function which eventually printed our results.
 
 (Part 2: Encrypting an Image)
 
